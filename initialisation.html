@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Initialisation du Chronomètre</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f4f4f9; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
+        input[type="number"] { padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; width: 150px; text-align: center; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Initialiser le Chronomètre</h1>
+        <p>Entrez le temps écoulé (en **secondes**) pour initialiser le chronomètre :</p>
+        
+        <input type="number" id="initialTime" value="0" min="0">
+        
+        <button onclick="initialiserEtLancer()">Lancer le Chronomètre</button>
+    </div>
+
+    <script>
+        const initialTimeInput = document.getElementById('initialTime');
+        const STORAGE_KEY = 'elapsedTime';
+        
+        function initialiserEtLancer() {
+            // Récupère la valeur entrée et s'assure que c'est un nombre entier
+            let tempsInitial = parseInt(initialTimeInput.value, 10);
+            
+            // Assure que le temps n'est pas négatif
+            if (isNaN(tempsInitial) || tempsInitial < 0) {
+                tempsInitial = 0;
+            }
+
+            // 1. Stocke la valeur dans le localStorage, exactement comme si le chrono s'était arrêté à ce temps
+            localStorage.setItem(STORAGE_KEY, tempsInitial.toString());
+            
+            // 2. Redirige vers la page principale
+            // Assurez-vous que 'index.html' est bien le nom de votre page chronomètre !
+            window.location.href = 'index.html'; 
+        }
+
+        // Optionnel : Permet d'appuyer sur Entrée pour valider
+        initialTimeInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                initialiserEtLancer();
+            }
+        });
+    </script>
+</body>
+</html>
