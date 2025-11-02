@@ -1,18 +1,34 @@
+/* 1. Assure que le conteneur principal ne gêne pas l'alignement */
 .chrono-container {
-    /* Marge pour centrer le contenu */
-    margin: 20px auto; 
-    /* Dégage les éléments flottants */
+    /* Enlève toute largeur ou alignement qui pourrait confiner l'image */
+    width: 100%;
+    /* Utilisé pour contenir les éléments flottants sans casser le flux */
     overflow: auto; 
-    /* Définit une largeur maximale pour mieux gérer le float */
-    max-width: 600px; 
+    margin: 0; /* Important : enlève les marges latérales par défaut */
+    padding: 20px; /* Ajoute un petit espace autour du contenu */
+    box-sizing: border-box; /* Assure que le padding n'augmente pas la largeur de 100% */
 }
 
+/* 2. Style de l'image pour un alignement total à droite */
 .chrono-container img {
-    /* Ajoutez une petite marge pour séparer l'image du texte */
-    margin-left: 20px;
+    float: right;
+    /* Enlève toute marge droite interne du conteneur */
+    margin-right: 0; 
+    /* Ajoute de l'espace entre l'image et le texte (chrono) */
+    margin-left: 20px; 
 }
 
+/* 3. Ajustement du titre (chrono) pour qu'il soit à gauche de l'image */
 .chrono-container h1 {
-    /* Réduit l'espace vertical du titre si besoin */
-    margin-top: 0;
+    /* Empêche le titre d'être trop large */
+    width: fit-content; 
+    /* Met le texte du titre à gauche s'il était centré */
+    text-align: left; 
 }
+
+/* Si vous voulez que les boutons et le titre commencent SOUS l'image : */
+/*
+.chrono-container h1, .chrono-container button {
+    clear: right;
+}
+*/
