@@ -1,0 +1,18 @@
+.chrono-container {
+    /* Marge pour centrer le contenu */
+    margin: 20px auto; 
+    /* Dégage les éléments flottants */
+    overflow: auto; 
+    /* Définit une largeur maximale pour mieux gérer le float */
+    max-width: 600px; 
+}
+
+.chrono-container img {
+    /* Ajoutez une petite marge pour séparer l'image du texte */
+    margin-left: 20px;
+}
+
+.chrono-container h1 {
+    /* Réduit l'espace vertical du titre si besoin */
+    margin-top: 0;
+}
